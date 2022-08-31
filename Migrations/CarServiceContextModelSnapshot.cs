@@ -163,7 +163,7 @@ namespace CarService.Migrations
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("DESCRIPTION");
 
-                    b.Property<long>("MasterId")
+                    b.Property<long?>("MasterId")
                         .HasColumnType("bigint")
                         .HasColumnName("ID_MASTER");
 
@@ -205,9 +205,7 @@ namespace CarService.Migrations
 
                     b.HasOne("CarService.Models.Entities.MasterEntity", "Master")
                         .WithMany()
-                        .HasForeignKey("MasterId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("MasterId");
 
                     b.Navigation("Car");
 

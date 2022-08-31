@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CarService.Migrations
 {
     [DbContext(typeof(CarServiceContext))]
-    [Migration("20220831220244_EntitiesFixes")]
+    [Migration("20220831221848_EntitiesFixes")]
     partial class EntitiesFixes
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -165,7 +165,7 @@ namespace CarService.Migrations
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("DESCRIPTION");
 
-                    b.Property<long>("MasterId")
+                    b.Property<long?>("MasterId")
                         .HasColumnType("bigint")
                         .HasColumnName("ID_MASTER");
 
@@ -207,9 +207,7 @@ namespace CarService.Migrations
 
                     b.HasOne("CarService.Models.Entities.MasterEntity", "Master")
                         .WithMany()
-                        .HasForeignKey("MasterId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("MasterId");
 
                     b.Navigation("Car");
 

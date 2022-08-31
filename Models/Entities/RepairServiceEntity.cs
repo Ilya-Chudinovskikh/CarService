@@ -25,7 +25,7 @@ namespace CarService.Models.Entities
         /// Идентификатор мастера
         /// </summary>
         [Column("ID_MASTER")]
-        public long MasterId { get; set; }
+        public long? MasterId { get; set; }
 
         /// <summary>
         /// Мастер
