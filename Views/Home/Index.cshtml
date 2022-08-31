@@ -1,0 +1,33 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+@using CarService.Models
+@using Microsoft.AspNetCore.Mvc.Rendering;
+@using System.Globalization;
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+
+<form method="post">
+    <p>
+        <label for="month">Выберите месяц:</label>
+        <select type="number" name="month" class="form-control">
+
+        @{var months = DateTimeFormatInfo.InvariantInfo.MonthNames
+                        .Where(m=>!string.IsNullOrEmpty(m))
+                        .ToList();
+
+        for(int i = 1; i < months.Count; i++)
+        {
+                    <option value="@i">@months[i-1]</option>
+        }}
+
+        </select>
+    </p>
+
+    <p>
+        <input type="submit" value="Загрузить отчёт"/>
+    </p>
+</form>
